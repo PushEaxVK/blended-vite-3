@@ -6,19 +6,23 @@ import Section from '../components/Section/Section';
 import { useEffect, useState } from 'react';
 import { fetchCountry } from '../service/countryApi';
 import CountryInfo from '../components/CountryInfo/CountryInfo';
+import Loader from '../components/Loader/Loader';
 
 const Country = () => {
   const { countryId } = useParams();
   const [countryData, setCountryData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchCountryData = async () => {
       try {
+        setIsLoading(true);
         const data = await fetchCountry(countryId);
-        console.log(data);
         setCountryData(data);
       } catch (error) {
         console.error('Error when fetch country info: ', error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchCountryData();
@@ -36,6 +40,7 @@ const Country = () => {
           bottom
         />
         <GoBackBtn />
+        {isLoading && <Loader />}
         {countryData?.countryName && (
           <CountryInfo
             countryData={countryData}

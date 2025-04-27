@@ -1,7 +1,4 @@
 import styles from './CountryInfo.module.css';
-// {
-
-// }
 
 const CountryInfo = ({
   flag,
@@ -11,7 +8,6 @@ const CountryInfo = ({
   population,
 }) => {
   return (
-    // <h2>CountryInfo</h2>
     <div className={styles.wrapper}>
       <div className={styles.flag}>
         <img className={styles.img} src={flag} alt={countryName} />
