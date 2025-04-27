@@ -24,7 +24,7 @@ const SearchCountry = () => {
         const newCountries = await fetchByRegion(region);
         setRegionCountries(newCountries);
       } catch (error) {
-        console.error('Error when fetch by region: ', error);
+        alert('Error when fetch by region: ', error);
       } finally {
         setIsLoading(false);
       }
@@ -33,9 +33,9 @@ const SearchCountry = () => {
   }, [region, searchParams]);
 
   const handleSearch = value => {
-    const updatedParams = new URLSearchParams(searchParams);
-    updatedParams.set('region', value);
-    setSearchParams(updatedParams);
+    // const updatedParams = new URLSearchParams(searchParams);
+    // updatedParams.set('region', value);
+    setSearchParams({ region: value });
   };
 
   return (

@@ -10,7 +10,7 @@ import Loader from '../components/Loader/Loader';
 
 const Country = () => {
   const { countryId } = useParams();
-  const [countryData, setCountryData] = useState({});
+  const [countryData, setCountryData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Country = () => {
         const data = await fetchCountry(countryId);
         setCountryData(data);
       } catch (error) {
-        console.error('Error when fetch country info: ', error);
+        alert('Error when fetch country info: ', error);
       } finally {
         setIsLoading(false);
       }
@@ -41,7 +41,7 @@ const Country = () => {
         />
         <GoBackBtn />
         {isLoading && <Loader />}
-        {countryData?.countryName && (
+        {countryData && (
           <CountryInfo
             countryData={countryData}
             flag={countryData.flag}

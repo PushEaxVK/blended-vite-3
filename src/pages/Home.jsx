@@ -17,7 +17,7 @@ const Home = () => {
         const data = await getCountries();
         setCountries(data);
       } catch (error) {
-        console.error('Error when fetch countries: ', error);
+        alert('Error when fetch countries: ', error);
       } finally {
         setIsLoading(false);
       }
