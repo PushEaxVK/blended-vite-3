@@ -18,7 +18,7 @@ const SearchForm = ({ onSubmit }) => {
       alert('Choice some value!');
       return;
     }
-    console.log(value);
+    onSubmit(value);
   };
 
   return (
